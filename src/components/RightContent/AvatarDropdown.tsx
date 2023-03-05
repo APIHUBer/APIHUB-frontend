@@ -1,4 +1,5 @@
 import { outLogin } from '@/services/ant-design-pro/api';
+import { userLogoutUsingPOST } from '@/services/apihub-backend/userController';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { useEmotionCss } from '@ant-design/use-emotion-css';
 import { history, useModel } from '@umijs/max';
@@ -64,7 +65,7 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu, childre
         flushSync(() => {
           setInitialState((s) => ({ ...s, currentUser: undefined }));
         });
-        loginOut();
+        userLogoutUsingPOST();
         return;
       }
       history.push(`/account/${key}`);
