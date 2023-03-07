@@ -1,6 +1,5 @@
 export default {
-  'pages.layouts.userLayout.title':
-    'Ant Design is the most influential web design specification in Xihu district',
+  'pages.layouts.userLayout.title': 'APIHUB is an elegant platform for invoking API interfaces',
   'pages.login.accountLogin.tab': 'Account Login',
   'pages.login.accountLogin.errorMessage': 'Incorrect username/password(admin/ant.design)',
   'pages.login.failure': 'Login failed, please try again!',
@@ -56,6 +55,8 @@ export default {
   'pages.searchTable.exception': 'Please enter the reason for the exception!',
   'pages.searchTable.titleOption': 'Option',
   'pages.searchTable.config': 'Configuration',
+  'pages.searchTable.update': 'Update',
+  'pages.searchTable.delete': 'Delete',
   'pages.searchTable.subscribeAlert': 'Subscribe to alerts',
   'pages.searchTable.title': 'Enquiry Form',
   'pages.searchTable.new': 'New',
