@@ -8,14 +8,15 @@ const Settings: ProLayoutProps & {
   logo?: string;
 } = {
   navTheme: 'light',
-  // 拂晓蓝
   colorPrimary: '#1890ff',
-  layout: 'top',
+  fixedHeader: true,
+  layout: 'mix',
   contentWidth: 'Fluid',
-  fixedHeader: false,
+  splitMenus: true,
   fixSiderbar: true,
   colorWeak: false,
   title: 'APIHUB',
+  siderMenuType: "group",
   pwa: true,
   logo: 'https://cs410032002121be004.blob.core.windows.net/icon/logo.svg',
   iconfontUrl: '',
@@ -24,5 +25,6 @@ const Settings: ProLayoutProps & {
     //https://procomponents.ant.design/components/layout#%E9%80%9A%E8%BF%87-token-%E4%BF%AE%E6%94%B9%E6%A0%B7%E5%BC%8F
   },
 };
+
 
 export default Settings;

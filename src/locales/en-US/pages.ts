@@ -56,6 +56,8 @@ export default {
   'pages.searchTable.titleOption': 'Option',
   'pages.searchTable.config': 'Configuration',
   'pages.searchTable.update': 'Update',
+  'pages.searchTable.online': 'Publish',
+  'pages.searchTable.offline': 'Offline',
   'pages.searchTable.delete': 'Delete',
   'pages.searchTable.subscribeAlert': 'Subscribe to alerts',
   'pages.searchTable.title': 'Enquiry Form',

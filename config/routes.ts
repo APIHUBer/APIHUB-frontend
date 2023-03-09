@@ -10,48 +10,39 @@
  * @param icon 配置路由的图标，取值参考 https://ant.design/components/icon-cn， 注意去除风格后缀和大小写，如想要配置图标为 <StepBackwardOutlined /> 则取值应为 stepBackward 或 StepBackward，如想要配置图标为 <UserOutlined /> 则取值应为 user 或者 User
  * @doc https://umijs.org/docs/guides/routes
  */
+
 export default [
+  { path: '/', name: 'Home', icon: 'home', component: './Index' },
+  {
+    path: '/interface_info/:id',
+    name: 'Interface',
+    icon: 'smile',
+    component: './InterfaceInfo',
+    hideInMenu: true,
+  },
   {
     path: '/user',
     layout: false,
-    routes: [
-      {
-        name: 'login',
-        path: '/user/login',
-        component: './User/Login',
-      },
-    ],
+    routes: [{ name: 'login', path: '/user/login', component: './User/Login' }],
   },
-  // {
-  //   path: '/welcome',
-  //   name: 'welcome',
-  //   icon: 'smile',
-  //   component: './Welcome',
-  // },
   {
     path: '/admin',
     name: 'admin',
     icon: 'crown',
     access: 'canAdmin',
+    navTheme: 'light',
+    fixedHeader: true,
+    layout: 'mix',
+    contentWidth: 'Fluid',
     routes: [
       {
-        name: 'Interface Management',
-        icon: 'table',
         path: '/admin/interface_info',
-        component: './InterfaceInfo',
+        name: 'interface_management',
+        icon: 'table',
+        component: './Admin/InterfaceInfo',
       },
-      // {
-      //   path: '/admin/sub-page',
-      //   name: 'sub-page',
-      //   component: './Admin',
-      // },
     ],
   },
-
-  // {
-  //   path: '/',
-  //   redirect: '/welcome',
-  // },
   {
     path: '*',
     layout: false,

@@ -1,20 +1,17 @@
 import Footer from '@/components/Footer';
 import { getFakeCaptcha } from '@/services/ant-design-pro/login';
 import { userLoginUsingPOST } from '@/services/apihub-backend/userController';
+import { LockOutlined, MobileOutlined, UserOutlined } from '@ant-design/icons';
 import {
-LockOutlined,
-MobileOutlined,UserOutlined
-} from '@ant-design/icons';
-import {
-LoginForm,
-ProFormCaptcha,
-ProFormCheckbox,
-ProFormText
+  LoginForm,
+  ProFormCaptcha,
+  ProFormCheckbox,
+  ProFormText,
 } from '@ant-design/pro-components';
 import { useEmotionCss } from '@ant-design/use-emotion-css';
-import { FormattedMessage,Helmet,history,SelectLang,useIntl,useModel } from '@umijs/max';
-import { Alert,message,Tabs } from 'antd';
-import React,{ useState } from 'react';
+import { FormattedMessage, Helmet, history, SelectLang, useIntl, useModel } from '@umijs/max';
+import { Alert, message, Tabs } from 'antd';
+import React, { useState } from 'react';
 import Settings from '../../../../config/defaultSettings';
 
 // other Payment way
@@ -103,7 +100,6 @@ const Login: React.FC = () => {
     try {
       // 登录
       const res = await userLoginUsingPOST({ ...values });
-      console.log(res)
       if (res.data) {
         const urlParams = new URL(window.location.href).searchParams;
         history.push(urlParams.get('redirect') || '/');
