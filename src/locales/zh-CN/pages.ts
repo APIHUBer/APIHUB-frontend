@@ -54,6 +54,8 @@ export default {
   'pages.searchTable.titleOption': '操作',
   'pages.searchTable.config': '配置',
   'pages.searchTable.update': '修改',
+  'pages.searchTable.online': '发布',
+  'pages.searchTable.offline': '下线',
   'pages.searchTable.delete': '删除',
   'pages.searchTable.subscribeAlert': '订阅警报',
   'pages.searchTable.title': '查询表格',
