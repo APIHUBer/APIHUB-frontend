@@ -1,8 +1,8 @@
+import { useEmotionCss } from '@ant-design/use-emotion-css';
 import { Dropdown } from 'antd';
 import type { DropDownProps } from 'antd/es/dropdown';
-import React from 'react';
-import { useEmotionCss } from '@ant-design/use-emotion-css';
 import classNames from 'classnames';
+import React from 'react';
 
 export type HeaderDropdownProps = {
   overlayClassName?: string;
@@ -17,7 +17,17 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({ overlayClassName: cls, 
       },
     };
   });
-  return <Dropdown overlayClassName={classNames(className, cls)} {...restProps} />;
+  // return <Dropdown overlayClassName={classNames(className, cls)} {...restProps} />;
+  return (
+    <Dropdown overlayClassName={classNames(className, cls)} {...restProps}>
+      <img
+        src="https://cs410032002121be004.blob.core.windows.net/avatar/Delivery%20boy-5.png"
+        alt="avatar"
+        width="46"
+        height="46"
+      />
+    </Dropdown>
+  );
 };
 
 export default HeaderDropdown;

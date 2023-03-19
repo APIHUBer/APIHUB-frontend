@@ -12,10 +12,10 @@
  */
 
 export default [
-  { path: '/', name: 'Home', icon: 'home', component: './Index' },
+  { path: '/', name: 'home', icon: 'home', component: './Index' },
   {
     path: '/interface_info/:id',
-    name: 'Interface',
+    // name: 'Interface',
     icon: 'smile',
     component: './InterfaceInfo',
     hideInMenu: true,
@@ -27,7 +27,7 @@ export default [
   },
   {
     path: '/admin',
-    name: 'admin',
+    name: 'Admin',
     icon: 'crown',
     access: 'canAdmin',
     navTheme: 'light',
@@ -37,9 +37,15 @@ export default [
     routes: [
       {
         path: '/admin/interface_info',
-        name: 'interface_management',
+        name: 'interface-management',
         icon: 'table',
         component: './Admin/InterfaceInfo',
+      },
+      {
+        path: '/admin/interface_analysis',
+        name: 'Interface Analysis',
+        icon: 'analysis',
+        component: './Admin/InterfaceAnalysis',
       },
     ],
   },

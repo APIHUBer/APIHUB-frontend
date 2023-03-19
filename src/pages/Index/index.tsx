@@ -12,7 +12,7 @@ const Index: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [list, setList] = useState<API.InterfaceInfo[]>([]);
   const [total, setTotal] = useState<number>(0);
-  const pagesize = 5;
+  const pagesize = 10;
 
   const { token } = theme.useToken();
   const { initialState } = useModel('@@initialState');

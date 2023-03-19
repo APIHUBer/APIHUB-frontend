@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
         {
           key: 'APIHUB',
           title: 'APIHUB',
-          href: 'https://pro.ant.design',
+          href: 'https://github.com/APIHUBer',
           blankTarget: true,
         },
         {
@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
         {
           key: 'Zanyuan Yang',
           title: 'Zanyuan Yang',
-          href: 'https://ant.design',
+          href: 'https://github.com/ZanyuanYang',
           blankTarget: true,
         },
       ]}

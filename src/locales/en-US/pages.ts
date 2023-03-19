@@ -9,6 +9,7 @@ export default {
   'pages.login.password.placeholder': 'Password: ant.design',
   'pages.login.password.required': 'Please input your password!',
   'pages.login.phoneLogin.tab': 'Phone Login',
+  'pages.register.accountRegister.tab': 'Account Register',
   'pages.login.phoneLogin.errorMessage': 'Verification Code Error',
   'pages.login.phoneNumber.placeholder': 'Phone Number',
   'pages.login.phoneNumber.required': 'Please input your phone number!',

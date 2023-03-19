@@ -1,4 +1,5 @@
 import CreateModal from '@/pages/Admin/InterfaceInfo/components/CreateModal';
+import DeleteModal from '@/pages/Admin/InterfaceInfo/components/DeleteModal';
 import UpdateModal from '@/pages/Admin/InterfaceInfo/components/UpdateModal';
 import {
   addInterfaceInfoUsingPOST,
@@ -31,6 +32,11 @@ const TableList: React.FC = () => {
    * @zh-CN 分布更新窗口的弹窗
    * */
   const [updateModalOpen, handleUpdateModalOpen] = useState<boolean>(false);
+  /**
+   * @en-US The pop-up window of the distribution delete window
+   * @zh-CN 分布删除窗口的弹窗
+   * */
+  const [deleteModalOpen, handleDeleteModalOpen] = useState<boolean>(false);
 
   const [showDetail, setShowDetail] = useState<boolean>(false);
 
@@ -49,6 +55,7 @@ const TableList: React.FC = () => {
       await addInterfaceInfoUsingPOST({ ...fields });
       hide();
       message.success('Create successfully');
+      actionRef.current?.reload();
       handleModalOpen(false);
       return true;
     } catch (error) {
@@ -137,12 +144,12 @@ const TableList: React.FC = () => {
    *
    * @param record
    */
-  const handleRemove = async (record: API.InterfaceInfo) => {
+  const handleRemove = async () => {
     const hide = message.loading('Deleting');
-    if (!record) return true;
+    if (!currentRow?.id) return true;
     try {
       await deleteInterfaceInfoUsingPOST({
-        id: record.id,
+        id: currentRow?.id,
       });
       hide();
       message.success('Deleted successfully');
@@ -161,11 +168,19 @@ const TableList: React.FC = () => {
    * */
   const intl = useIntl();
 
+  const valueEnum = {
+    GET: { text: 'GET', status: 'GET' },
+    POST: { text: 'POST', status: 'POST' },
+    PUT: { text: 'PUT', status: 'PUT' },
+    DELETE: { text: 'DELETE', status: 'DELETE' },
+  };
+
   const columns: ProColumns<API.InterfaceInfo>[] = [
     {
       title: 'id',
       dataIndex: 'id',
       valueType: 'index',
+      hideInTable: true,
     },
     {
       title: 'Interface Name',
@@ -187,7 +202,9 @@ const TableList: React.FC = () => {
     {
       title: 'Method',
       dataIndex: 'method',
-      valueType: 'text',
+      valueType: 'radioButton',
+      width: 100,
+      valueEnum,
     },
     {
       title: 'url',
@@ -215,31 +232,37 @@ const TableList: React.FC = () => {
       hideInForm: true,
       valueEnum: {
         0: {
-          text: 'Shut down',
-          status: 'Default',
+          text: '',
+          status: 'Error',
         },
         1: {
-          text: 'Turn on',
-          status: 'Processing',
+          text: '',
+          status: 'Success',
         },
       },
+      align: 'center',
+      width: 100,
     },
     {
       title: 'Create Time',
       dataIndex: 'createTime',
       valueType: 'dateTime',
       hideInForm: true,
+      hideInTable: true,
     },
     {
       title: 'Update Time',
       dataIndex: 'updateTime',
       valueType: 'dateTime',
       hideInForm: true,
+      hideInTable: true,
     },
     {
       title: 'Operation',
       dataIndex: 'option',
       valueType: 'option',
+      fixed: 'right',
+      width: 260,
       render: (_, record) => [
         <Button
           type="default"
@@ -278,7 +301,8 @@ const TableList: React.FC = () => {
           key="config"
           danger
           onClick={() => {
-            handleUpdateModalOpen(true);
+            // handleRemove(record);
+            handleDeleteModalOpen(true);
             setCurrentRow(record);
           }}
         >
@@ -341,6 +365,7 @@ const TableList: React.FC = () => {
             setSelectedRows(selectedRows);
           },
         }}
+        scroll={{ x: 1500 }}
       />
       {selectedRowsState?.length > 0 && (
         <FooterToolbar
@@ -435,6 +460,16 @@ const TableList: React.FC = () => {
           handleAdd(values);
         }}
         visible={createModalOpen}
+      />
+      <DeleteModal
+        open={deleteModalOpen}
+        onCancel={() => {
+          handleDeleteModalOpen(false);
+        }}
+        onOk={() => {
+          handleRemove();
+          handleDeleteModalOpen(false);
+        }}
       />
     </PageContainer>
   );
